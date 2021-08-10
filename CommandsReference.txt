@@ -1,0 +1,16 @@
+docker build -f Dockerfile -t ms-fibonacci-service .
+docker run -p  8080:8080 ms-fibonacci-service
+docker run -p  8080:8080 ms-fibonacci-service server hello-world.yml
+
+docker build -t vinodkumarpotta/ms-fibonacci-service:latest -f Dockerfile .
+docker login -u "vinodkumarpotta" -p "Vinu9949@" docker.io
+docker push vinodkumarpotta/ms-fibonacci-service:latest
+
+
+docker image rm ms-fibonacci-service:latest
+docker image rm vinodkumarpotta/ms-fibonacci-service:latest
+
+docker rmi -f a04b2aa9c20
+
+docker login -u "vinodkumarpotta" -p "Vinu9949@" docker.io
+docker run -p  8080:8080 vinodkumarpotta/ms-fibonacci-service:latest server hello-world.yml
